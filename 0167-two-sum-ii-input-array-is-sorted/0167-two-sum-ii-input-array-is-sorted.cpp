@@ -1,23 +1,15 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {
-        int i=0;
-        int j=numbers.size() - 1;
-        
-        vector<int> result;
-        
-        while(i<j){
-            int sum = numbers[i] + numbers[j];
-            if(sum < target)
-                i++;
-            else if(sum > target)
-                j--;
-            else{
-                result.push_back(i + 1);
-                result.push_back(j + 1);
-                break;
-            }
+        unordered_map<int, int> um;
+        for (int i=0; i < numbers.size(); i++)
+            um[numbers[i]]=i;
+        for (int i=0; i< numbers.size(); i++){
+            int complement = target - numbers[i];
+            if (um.count(complement) && um[complement] != i)
+                return {i+1, um[complement]+1};
         }
-        return result;
+        // In case there is no solution, we'll just return null
+        return {};
     }
 };
