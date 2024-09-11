@@ -5,6 +5,7 @@ public:
         vector<vector<int>> result;
         int n = nums.size();
         
+        // i is from 0 to the last second element because the last one is r
         for(int i=0;i<n-2;++i){
             if(i>0 && nums[i]==nums[i-1])
                 continue;
