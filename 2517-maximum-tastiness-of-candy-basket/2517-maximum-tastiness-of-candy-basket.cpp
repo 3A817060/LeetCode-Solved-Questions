@@ -1,26 +1,25 @@
 class Solution {
 public:
     int maximumTastiness(vector<int>& price, int k) {
+        int n = price.size();
         sort(price.begin(), price.end());
-        int l=0, r=price.back() - price[0];
-        auto check = [&](int x) -> bool{
-            int cnt=0, pre = -x;
-            for(int& cur : price){
-                if(cur - pre >= x){
-                    pre = cur;
-                    ++cnt;
+        int l=0, r = 1e9, ans = 1;
+        
+        while(l <= r){
+            int mid = (l+r)/2, cntOfCandies=1, last=price[0];
+            for(int i=0;i<n;i++){
+                if(price[i]-last >= mid){
+                    cntOfCandies++;
+                    last = price[i];
                 }
             }
-            return cnt >= k;
-        };
-        while(l < r){
-            int mid = (l+r+1) >> 1;
-            if(check(mid)){
-                l = mid;
+            if(cntOfCandies >= k){
+                ans = mid;
+                l = mid+1;
             }else{
-                r = mid - 1;
+                r = mid-1;
             }
         }
-        return l;
+        return ans;
     }
 };
