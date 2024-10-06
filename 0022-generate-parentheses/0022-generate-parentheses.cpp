@@ -1,23 +1,22 @@
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
-        vector<string> result;
-        backtrack(result, "", 0, 0, n);
-        return result;
+        vector<string> results;
+        backtrack(results, "", 0, 0, n);
+        return results;
     }
     
     void backtrack(vector<string> &output, string current_str, int open, int close, int n){
-        if(current_str.length() == n*2){
+        if(current_str.length()==n*2){
             output.push_back(current_str);
-            return ;
+            return;
         }
-        if(open < n){
-            backtrack(output, current_str + '(', open + 1, close, n);
-        }
-        if(close < open){
-            backtrack(output, current_str + ')', open, close + 1, n);
-        }
+        if(open < n)
+            backtrack(output, current_str + "(", open + 1, close, n);
+        if(close < open)
+            backtrack(output, current_str + ")", open, close + 1, n);
     }
+    
         
 //         vector<vector<string>> alls(1, { "" });
         
