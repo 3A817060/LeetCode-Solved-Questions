@@ -12,8 +12,8 @@ public:
         
         while(l < r){
             const int mid = (l + r) / 2;
-            const int i = mid / n;
-            const int j = mid % n;
+            const int i = mid / n;      // For getting the index of a row
+            const int j = mid % n;      // For getting the index of a column
             if(matrix[i][j] == target)
                 return true;
             if(matrix[i][j] < target)
