@@ -8,8 +8,8 @@ public:
             count[s[r]]++;
             maxf = max(maxf, count[s[r]]);
             while((r-l+1)-maxf > k){
-                count[s[l]]--;
-                l++;
+                count[s[l++]]--;
+                // l++;
             }
             res = max(res, r-l+1);
         }
