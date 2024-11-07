@@ -10,7 +10,7 @@ public:
             if(j - i == k){
                 if(mp == mp2) return true;
                 mp[s2[i]]--;
-                if(mp[s2[i]] == 0) mp.erase(s2[i]);
+                if(mp[s2[i]] ==  0) mp.erase(s2[i]);
                 i++;
             }
         }
